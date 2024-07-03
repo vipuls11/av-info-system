@@ -1,4 +1,5 @@
 import React from "react";
+import "./BranchList.css";
 // import BranchDataList from "./BranchDataList";
 
 const BranchList = () => {
@@ -16,7 +17,7 @@ const BranchList = () => {
     {
       id: "02",
       branch_name: "Maharashtra: Pune",
-      head: "",
+      //   head: "",
       company_name: "Prime Assetsource Pvt Ltd,",
       address:
         "Survey No.1547/A., G-7, Sadashiv Pet, Ramasharm Housing Society, Tilak Road, Pune - 411030",
@@ -26,7 +27,7 @@ const BranchList = () => {
     {
       id: "03",
       branch_name: "Telangana: Hyderabad",
-      head: "Power-X (Warehouse)",
+      //   head: "",
       company_name: "Prime Assetsource Pvt Ltd,",
       address:
         "Shop No 455 C Block 4th Floor, CTC Park Lane, S D Road, Secunderabad/Hyderabad - 500003",
@@ -36,7 +37,7 @@ const BranchList = () => {
     {
       id: "04",
       branch_name: "Maharashtra: Mumbai",
-      head: "Power-X (Warehouse)",
+      //   head: "",
       company_name: "Prime Assetsource Pvt Ltd,",
       address:
         "No.21, 3rd Floor, Shanti Niketan Building, Near Vijay Chambers, Padamji Road, Mumbai - 400004",
@@ -46,7 +47,7 @@ const BranchList = () => {
     {
       id: "05",
       branch_name: "Maharashtra: New Mumbai",
-      head: "Power-X (Warehouse)",
+      //   head: "",
       company_name: "Prime Assetsource Pvt Ltd,",
       address:
         "Vashi Plaza, Sector 17 Office No-510 'D' Wing 3rd Floor, Plot No. 80 & 81, Mumbai - 400703",
@@ -55,20 +56,25 @@ const BranchList = () => {
     },
   ];
 
-  const items = BranchListitem.map((list) => {
+  const items = BranchListitem.map((list, index) => {
+    const isFirst = index === 0;
     return (
-      <li className="" key={list.id} id={list.id}>
-        <h3>{list.branch_name}</h3>
-        <p>{list.head}</p>
-        <p>{list.companyname}</p>
-        <address>{list.company_name}</address>
-        <p>{list.phone_no}</p>
-        <button>{list.button_person_name}</button>
+      <li className="branchlist" key={list.id} id={list.id}>
+        <h3 className="branchlist_name">{list.branch_name}</h3>
+        <p className="branchlist_head">{list.head}</p>
+        <p className="branchlist_company">{list.company_name}</p>
+        <address
+          className={`branchlist_address ${isFirst ? "first-address" : ""}`}
+        >
+          {list.address}
+        </address>
+        <p className="branchlist_phone_no">{list.phone_no}</p>
+        <button className="branchlist_button">{list.button_person_name}</button>
       </li>
     );
   });
 
-  return <ul>{items}</ul>;
+  return <ul className="branchs">{items}</ul>;
 };
 
 export default BranchList;
